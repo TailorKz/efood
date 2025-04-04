@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
+
 export const BannerImg = styled.div`
   width: 100%;
   height: 384px;
@@ -18,5 +20,7 @@ export const BannerImg = styled.div`
     display: block;
     margin-top: 138px;
     text-align: center;
+    color: ${cores.first};
+    font-size: 36px;
   }
 `
