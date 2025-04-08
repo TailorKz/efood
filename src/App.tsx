@@ -1,14 +1,13 @@
 import Banner from './components/Banner'
+import Product from './components/Product'
 import { GlobalCss } from './styles'
 
 function App() {
   return (
     <>
       <GlobalCss />
-      <div>
-        <Banner />
-        Olá mundo
-      </div>
+      <Banner />
+      <Product />
     </>
   )
 }
