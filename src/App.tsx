@@ -1,5 +1,6 @@
 import Banner from './components/Banner'
-import Product from './components/Product'
+import Footer from './components/Footer'
+import ProductList from './components/Product/ProductList'
 import { GlobalCss } from './styles'
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <>
       <GlobalCss />
       <Banner />
-      <Product />
+      <ProductList />
+      <Footer />
     </>
   )
 }

@@ -46,6 +46,9 @@ export const Items = styled.div`
     font-size: 16px;
     font-weight: 700;
   }
+  &:nth-last-child(-n + 2) {
+    margin-bottom: 70px;
+  }
 `
 export const ProductCard = styled.div`
   display: flex;
