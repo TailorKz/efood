@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 export const cores = {
   first: '#E66767',
   white: '#FFFFFF',
-  bege: '#FFEBD9'
+  bege: '#FFEBD9',
+  background: '#FFF8F2'
 }
 
 export const GlobalCss = createGlobalStyle`
