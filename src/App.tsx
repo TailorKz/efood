@@ -1,16 +1,16 @@
-import Banner from './components/Banner'
+import { BrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
-import ProductList from './components/Product/ProductList'
+import Rotas from './routes'
 import { GlobalCss } from './styles'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalCss />
-      <Banner />
-      <ProductList />
+      <div className="container"></div>
+      <Rotas />
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

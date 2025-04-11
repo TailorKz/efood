@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   Items,
   Tag,
@@ -7,7 +8,6 @@ import {
   TitleContainer,
   Infos
 } from './styles'
-
 import estrela from '../../assets/images/estrela.png'
 
 type ProductProps = {
@@ -15,15 +15,24 @@ type ProductProps = {
   title: string
   description: string
   rate: number
+  bannerImage?: string
+  tag: string
 }
 
-const Product = ({ image, title, description, rate }: ProductProps) => (
+const Product = ({
+  image,
+  title,
+  description,
+  rate,
+  bannerImage,
+  tag
+}: ProductProps) => (
   <Items>
     <ProductCard style={{ position: 'relative' }}>
       <img src={image} alt={title} />
       <TagWrapper>
         <Tag>Destaque da semana</Tag>
-        <Tag>Japonesa</Tag>
+        <Tag>{tag}</Tag>
       </TagWrapper>
       <Infos>
         <TitleContainer>
@@ -33,7 +42,12 @@ const Product = ({ image, title, description, rate }: ProductProps) => (
           </Star>
         </TitleContainer>
         <p>{description}</p>
-        <button>Saiba mais</button>
+        <Link
+          to="/produto"
+          state={{ image, title, description, rate, bannerImage, tag }}
+        >
+          <button>Saiba mais</button>
+        </Link>
       </Infos>
     </ProductCard>
   </Items>
