@@ -3,12 +3,13 @@ import { Container } from './styles'
 import sushi from '../../assets/images/imagem.png'
 import macaroni from '../../assets/images/image 1.png'
 import macaroniBanner from '../../assets/images/imagem de fundo (1).png'
+import sushiBanner from '../../assets/images/imagem de fundo (2).png'
 
 const ProductList = () => (
   <Container style={{ backgroundColor: 'fff8f1' }}>
     <Product
       image={sushi}
-      bannerImage={macaroniBanner}
+      bannerImage={sushiBanner}
       title="Hioki Sushi"
       description="Peça já o melhor da culinária japonesa no conforto da sua casa!
         Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import ProductBanner from '../../components/ProductBanner'
 import { Container } from './styles'
-
+import Pizza from './Pizza'
 const ProductDetails = () => {
   const location = useLocation()
   const { title, bannerImage, tag } = location.state
@@ -14,6 +14,7 @@ const ProductDetails = () => {
         <p className="tag">{tag}</p>
         <h1>{title}</h1>
       </div>
+      <Pizza />
     </Container>
   )
 }

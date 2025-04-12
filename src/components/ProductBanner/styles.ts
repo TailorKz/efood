@@ -15,7 +15,7 @@ export const BannerImg = styled.div`
   img {
     width: 125px;
     height: 57.5px;
-    margin-right: 193px;
-    margin-left: 341px;
+    margin-right: 240px;
+    margin-left: 340px;
   }
 `
