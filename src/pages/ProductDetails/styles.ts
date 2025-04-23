@@ -54,7 +54,7 @@ export const Container = styled.div`
     }
   }
 `
-export const PizzaContainer = styled.div`
+export const ReceptContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
@@ -88,6 +88,11 @@ export const PizzaContainer = styled.div`
     margin-top: 8px;
     font-weight: 400;
     line-height: 22px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   button {

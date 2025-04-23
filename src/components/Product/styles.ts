@@ -89,11 +89,10 @@ export const Star = styled.span`
 `
 export const Tag = styled.span`
   background-color: #e74c3c;
-  color: white;
+  color: ${cores.bege};
   padding: 8px 6px;
   font-size: 12px;
   font-weight: 700;
-  font-weight: bold;
   margin-right: 8px;
   text-decoration: none;
 `

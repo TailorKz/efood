@@ -11,6 +11,7 @@ import {
 import estrela from '../../assets/images/estrela.png'
 
 type ProductProps = {
+  id: number
   image: string
   bannerImage?: string
   title: string
@@ -21,6 +22,7 @@ type ProductProps = {
 }
 
 const Product = ({
+  id,
   image,
   title,
   description,
@@ -43,7 +45,7 @@ const Product = ({
           </Star>
         </TitleContainer>
         <p>{description}</p>
-        <Link to="/produto" state={{ id: title, title, bannerImage, tag }}>
+        <Link to="/produto" state={{ id, title, bannerImage, tag }}>
           <button>Saiba mais</button>
         </Link>
       </Infos>

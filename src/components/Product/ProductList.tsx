@@ -27,6 +27,7 @@ const ProductList = () => {
       {restaurants.map((restaurant) => (
         <Product
           key={restaurant.id}
+          id={restaurant.id}
           image={restaurant.capa}
           bannerImage={restaurant.capa}
           title={restaurant.titulo}

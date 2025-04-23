@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Banner from '../../components/Banner'
 import ProductList from '../../components/Product/ProductList'
 export type Food = {
@@ -19,11 +18,6 @@ export type Food = {
   }
 }
 const Home = () => {
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes').then(
-      (res) => res.json()
-    )
-  }, [])
   return (
     <>
       <Banner />
