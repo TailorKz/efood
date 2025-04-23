@@ -19,7 +19,6 @@ const ProductDetails = () => {
   const [cardapio, setCardapio] = useState<CardapioItem[]>([])
 
   useEffect(() => {
-    // Fazendo a requisição para buscar o cardápio do restaurante
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((response) => response.json())
       .then((data) => setCardapio(data.cardapio))
