@@ -10,32 +10,48 @@ export const Container = styled.div`
   .image-wrapper {
     position: relative;
     width: 100%;
-  }
-
-  .productimage {
-    width: 100%;
     height: 350px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
+    overflow: hidden;
 
-  .tag {
-    position: absolute;
-    top: 25px;
-    left: 420px;
-    font-size: 32px;
-    font-weight: 100;
-    color: white;
-  }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
 
-  h1 {
-    position: absolute;
-    bottom: 32px;
-    left: 420px;
-    font-size: 32px;
-    color: white;
-    font-weight: 900;
+    .productimage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .tag,
+    h1 {
+      position: absolute;
+      z-index: 2;
+      color: white;
+    }
+
+    .tag {
+      top: 25px;
+      left: 420px;
+      font-size: 32px;
+      font-weight: 100;
+    }
+
+    h1 {
+      bottom: 32px;
+      left: 420px;
+      font-size: 32px;
+      font-weight: 900;
+    }
   }
 `
 export const PizzaContainer = styled.div`

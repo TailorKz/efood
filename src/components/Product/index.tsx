@@ -12,11 +12,12 @@ import estrela from '../../assets/images/estrela.png'
 
 type ProductProps = {
   image: string
+  bannerImage?: string
   title: string
   description: string
   rate: number
-  bannerImage?: string
   tag: string
+  destacado?: boolean
 }
 
 const Product = ({
@@ -25,14 +26,14 @@ const Product = ({
   description,
   rate,
   bannerImage,
-  tag
+  tag,
+  destacado
 }: ProductProps) => (
   <Items>
     <ProductCard style={{ position: 'relative' }}>
       <img src={image} alt={title} />
       <TagWrapper>
-        <Tag>Destaque da semana</Tag>
-        <Tag>{tag}</Tag>
+        {destacado && <Tag>Destaque da semana</Tag>} <Tag>{tag}</Tag>
       </TagWrapper>
       <Infos>
         <TitleContainer>
@@ -42,14 +43,12 @@ const Product = ({
           </Star>
         </TitleContainer>
         <p>{description}</p>
-        <Link
-          to="/produto"
-          state={{ image, title, description, rate, bannerImage, tag }}
-        >
+        <Link to="/produto" state={{ id: title, title, bannerImage, tag }}>
           <button>Saiba mais</button>
         </Link>
       </Infos>
     </ProductCard>
   </Items>
 )
+
 export default Product

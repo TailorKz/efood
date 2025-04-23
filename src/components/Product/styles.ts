@@ -7,7 +7,7 @@ export const Container = styled.section`
   column-gap: 80px;
   justify-content: center;
   padding-top: 80px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
   background-color: ${cores.background};
 `
 export const Infos = styled.div`
@@ -18,6 +18,7 @@ export const Items = styled.div`
   display: flex;
   justify-content: center;
   max-width: 472px;
+
   h3 {
     font-size: 18px;
     margin-left: 7px;
@@ -25,6 +26,7 @@ export const Items = styled.div`
     color: ${cores.first};
     font-weight: 700;
   }
+
   p {
     font-size: 14px;
     line-height: 22px;
@@ -32,6 +34,10 @@ export const Items = styled.div`
     margin-right: 8px;
     margin-bottom: 8px;
     color: ${cores.first};
+  }
+
+  &:nth-last-child(2) p {
+    margin-bottom: 30px;
   }
 
   button {
@@ -46,14 +52,20 @@ export const Items = styled.div`
     font-size: 16px;
     font-weight: 700;
   }
-  &:nth-last-child(-n + 2) {
-    margin-bottom: 70px;
-  }
 `
 export const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 48px;
+  width: 472px;
+  height: auto;
+  overflow: hidden;
+  background-color: ${cores.white};
+  img {
+    width: auto;
+    height: 217px;
+    object-fit: cover;
+  }
 `
 
 export const TitleContainer = styled.div`

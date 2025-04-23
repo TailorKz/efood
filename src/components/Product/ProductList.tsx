@@ -1,79 +1,43 @@
+import { useEffect, useState } from 'react'
 import Product from '.'
 import { Container } from './styles'
-import sushi from '../../assets/images/imagem.png'
-import macaroni from '../../assets/images/image 1.png'
-import macaroniBanner from '../../assets/images/imagem de fundo (1).png'
-import sushiBanner from '../../assets/images/imagem de fundo (2).png'
 
-const ProductList = () => (
-  <Container style={{ backgroundColor: 'fff8f1' }}>
-    <Product
-      image={sushi}
-      bannerImage={sushiBanner}
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa!
-        Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.
-        Entrega rápida, embalagens cuidadosas e qualidade garantida.
-        Experimente o Japão sem sair do lar com nosso delivery!"
-      rate={4.9}
-      tag="Japonesa"
-    />
-    <Product
-      image={macaroni}
-      bannerImage={macaroniBanner}
-      title="La Dolce Vita Trattoria"
-      description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até
-        você! Desfrute de massas caseiras, pizzas deliciosas e risotos
-        incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem
-        embalados e sabor inesquecível. Peça já!"
-      rate={4.6}
-      tag="Italiana"
-    />
-    <Product
-      image={macaroni}
-      bannerImage={macaroniBanner}
-      title="La Dolce Vita Trattoria"
-      description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até
-        você! Desfrute de massas caseiras, pizzas deliciosas e risotos
-        incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem
-        embalados e sabor inesquecível. Peça já!"
-      rate={4.6}
-      tag="Italiana"
-    />
-    <Product
-      image={macaroni}
-      bannerImage={macaroniBanner}
-      title="La Dolce Vita Trattoria"
-      description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até
-        você! Desfrute de massas caseiras, pizzas deliciosas e risotos
-        incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem
-        embalados e sabor inesquecível. Peça já!"
-      rate={4.6}
-      tag="Italiana"
-    />
-    <Product
-      image={macaroni}
-      bannerImage={macaroniBanner}
-      title="La Dolce Vita Trattoria"
-      description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até
-        você! Desfrute de massas caseiras, pizzas deliciosas e risotos
-        incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem
-        embalados e sabor inesquecível. Peça já!"
-      rate={4.6}
-      tag="Italiana"
-    />
-    <Product
-      image={macaroni}
-      bannerImage={macaroniBanner}
-      title="La Dolce Vita Trattoria"
-      description="A La Dolce Vita Trattoria leva a autêntica cozinha italiana até
-        você! Desfrute de massas caseiras, pizzas deliciosas e risotos
-        incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem
-        embalados e sabor inesquecível. Peça já!"
-      rate={4.6}
-      tag="Italiana"
-    />
-  </Container>
-)
+interface Restaurant {
+  destacado: boolean | undefined
+  id: number
+  titulo: string
+  capa: string
+  descricao: string
+  avaliacao: number
+  tipo: string
+}
+
+const ProductList = () => {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((response) => response.json())
+      .then((data) => setRestaurants(data))
+      .catch((error) => console.error('Erro ao buscar restaurantes', error))
+  }, [])
+
+  return (
+    <Container style={{ backgroundColor: '#fff8f1' }}>
+      {restaurants.map((restaurant) => (
+        <Product
+          key={restaurant.id}
+          image={restaurant.capa}
+          bannerImage={restaurant.capa}
+          title={restaurant.titulo}
+          description={restaurant.descricao}
+          rate={restaurant.avaliacao}
+          tag={restaurant.tipo}
+          destacado={restaurant.destacado}
+        />
+      ))}
+    </Container>
+  )
+}
 
 export default ProductList
