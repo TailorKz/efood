@@ -23,14 +23,17 @@ export const ModalContent = styled.div`
   display: flex;
 `
 
-export const CloseButton = styled.button`
+export const CloseButton = styled.div`
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 8px;
+  right: 8px;
   background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
+  img {
+    width: 16px;
+    height: 16px;
+  }
 `
 
 export const ItemImage = styled.img`

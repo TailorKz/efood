@@ -1,4 +1,5 @@
 import React from 'react'
+import close from '../../assets/images/close_1.png'
 import {
   ModalOverlay,
   ModalContent,
@@ -19,13 +20,16 @@ interface ModalItemProps {
 }
 
 const ModalItem = ({ onClose, item }: ModalItemProps) => (
-  <ModalOverlay>
-    <ModalContent>
-      <CloseButton onClick={onClose}>X</CloseButton>
+  <ModalOverlay onClick={onClose}>
+    <ModalContent onClick={(e) => e.stopPropagation()}>
+      <CloseButton onClick={onClose}>
+        <img src={close} alt="Fechar" />
+      </CloseButton>
       <ItemImage src={item.foto} alt={item.nome} />
       <Content>
         <h2>{item.nome}</h2>
-        <p>{item.descricao}</p> <br />
+        <p>{item.descricao}</p>
+        <br />
         <p>Serve: {item.porcao}</p>
         <button onClick={() => console.log('Adicionar ao carrinho')}>
           Adicionar ao carrinho - R$ {item.preco.toFixed(2)}
