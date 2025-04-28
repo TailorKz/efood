@@ -1,4 +1,3 @@
-import React from 'react'
 import close from '../../assets/images/close_1.png'
 import {
   ModalOverlay,
