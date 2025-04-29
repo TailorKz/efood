@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import close from '../../assets/images/lixeira-de-reciclagem-1.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -77,15 +76,22 @@ export const CartItem = styled.li`
     color: ${cores.first};
   }
   button {
-    background-image: url(${close});
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     border: none;
-    background-color: transparent;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 8px;
+    bottom: 8px;
+    right: 8px;
     cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 `

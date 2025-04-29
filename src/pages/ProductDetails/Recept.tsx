@@ -13,9 +13,10 @@ interface CardapioItem {
 
 interface ReceptProps {
   cardapio: CardapioItem[]
+  onAddToCart: () => void
 }
 
-const Recept = ({ cardapio }: ReceptProps) => {
+const Recept = ({ cardapio, onAddToCart }: ReceptProps) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<CardapioItem | null>(null)
 
@@ -48,7 +49,11 @@ const Recept = ({ cardapio }: ReceptProps) => {
         )}
       </ReceptContainer>
       {modalOpen && selectedItem && (
-        <ModalItem onClose={handleCloseModal} item={selectedItem} />
+        <ModalItem
+          onClose={handleCloseModal}
+          item={selectedItem}
+          onAddToCart={onAddToCart}
+        />
       )}
     </>
   )

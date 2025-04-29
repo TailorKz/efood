@@ -13,7 +13,11 @@ interface CardapioItem {
   foto: string
 }
 
-const ProductDetails = () => {
+interface ProductDetailsProps {
+  onAddToCart: () => void
+}
+
+const ProductDetails = ({ onAddToCart }: ProductDetailsProps) => {
   const location = useLocation()
   const { id, title, bannerImage, tag } = location.state
   const [cardapio, setCardapio] = useState<CardapioItem[]>([])
@@ -33,7 +37,7 @@ const ProductDetails = () => {
         <p className="tag">{tag}</p>
         <h1>{title}</h1>
       </div>
-      <Recept cardapio={cardapio} />
+      <Recept cardapio={cardapio} onAddToCart={onAddToCart} />
     </Container>
   )
 }
