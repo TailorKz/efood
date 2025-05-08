@@ -13,7 +13,7 @@ const ProductBanner = () => {
 
   return (
     <BannerImg style={{ backgroundImage: `url(${bannerImagem})` }}>
-      <h2>Restaurantes</h2>
+      <h2 className="first">Restaurantes</h2>
       <a href="./">
         <img src={logo} alt="EFOOD" />
       </a>

@@ -9,6 +9,19 @@ export const Container = styled.section`
   padding-top: 80px;
   padding-bottom: 80px;
   background-color: ${cores.background};
+
+  @media (max-width: 1050px) {
+    column-gap: 20px;
+  }
+
+  @media (max-width: 975px) {
+    grid-template-columns: 1fr;
+    column-gap: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 export const Infos = styled.div`
   border: 1px solid ${cores.first};
@@ -18,6 +31,9 @@ export const Items = styled.div`
   display: flex;
   justify-content: center;
   max-width: 472px;
+  @media (max-width: 485px) {
+    max-width: 90%;
+  }
 
   h3 {
     font-size: 18px;

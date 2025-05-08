@@ -21,6 +21,10 @@ export const ModalContent = styled.div`
   height: 344px;
   position: relative;
   display: flex;
+  @media (max-width: 612px) {
+    flex-direction: column;
+    height: auto;
+  }
 `
 
 export const CloseButton = styled.button`

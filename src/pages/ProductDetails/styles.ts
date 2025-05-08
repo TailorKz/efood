@@ -52,6 +52,13 @@ export const Container = styled.div`
       font-size: 32px;
       font-weight: 900;
     }
+    @media (max-width: 540px) {
+      .tag,
+      h1 {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
 `
 export const ReceptContainer = styled.div`
@@ -62,6 +69,9 @@ export const ReceptContainer = styled.div`
   width: 100%;
   max-width: 1024px;
   padding-bottom: 120px;
+  @media (max-width: 672px) {
+    width: 90%;
+  }
   div {
     background-color: ${cores.first};
     padding: 8px;

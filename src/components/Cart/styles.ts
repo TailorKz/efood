@@ -27,6 +27,13 @@ export const Sidebar = styled.aside<{ isCheckout?: boolean }>`
   max-width: 360px;
   width: 100%;
 
+  @media (max-width: 420px) {
+    max-width: 320px;
+  }
+  @media (max-width: 348px) {
+    max-width: 300px;
+  }
+
   button {
     max-width: 100%;
     width: 100%;
