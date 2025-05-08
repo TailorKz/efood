@@ -23,7 +23,7 @@ export const CartContainer = styled.div`
 export const Sidebar = styled.aside<{ isCheckout?: boolean }>`
   background-color: ${cores.first};
   z-index: 1;
-  padding: ${({ isCheckout }) => (isCheckout ? '0' : '40px 16px 0 16px')};
+  padding: ${({ isCheckout }) => (isCheckout ? '0' : '40px 8px 0 8px')};
   max-width: 360px;
   width: 100%;
 
@@ -36,6 +36,7 @@ export const Sidebar = styled.aside<{ isCheckout?: boolean }>`
     font-size: 14px;
     font-weight: 700;
     padding: 4px 0 4px 0;
+    cursor: pointer;
   }
 `
 export const Prices = styled.p`

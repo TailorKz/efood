@@ -2,12 +2,13 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Form, InlineGroup } from './styles'
+
 interface DeliveryFormProps {
   onNext: () => void
   onClose: () => void
 }
 
-const DeliveryForm = ({ onNext }: DeliveryFormProps) => {
+const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -24,14 +25,7 @@ const DeliveryForm = ({ onNext }: DeliveryFormProps) => {
       cep: Yup.string().required('Campo obrigatório'),
       number: Yup.string().required('Campo obrigatório')
     }),
-    onSubmit: (values: {
-      name: string
-      address: string
-      city: string
-      cep: string
-      number: string
-      complement?: string
-    }) => {
+    onSubmit: (values) => {
       console.log(values)
       onNext()
     }
@@ -118,7 +112,13 @@ const DeliveryForm = ({ onNext }: DeliveryFormProps) => {
         />
       </label>
       <button type="submit">Continuar com o pagamento</button>
-      <button type="button" onClick={onNext}>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault()
+          onClose()
+        }}
+      >
         Voltar para o carrinho
       </button>
     </Form>

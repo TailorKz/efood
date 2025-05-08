@@ -47,3 +47,53 @@ export const InlineGroup = styled.div`
     flex: 1;
   }
 `
+export const InlinePaymentGroup = styled.div`
+  display: flex;
+  gap: 30px;
+`
+
+export const CardNumberLabel = styled.label`
+  width: 228px;
+  display: flex;
+  flex-direction: column;
+`
+
+export const CVVLabel = styled.label`
+  width: 87px;
+  display: flex;
+  flex-direction: column;
+`
+
+export const InlineExpirationGroup = styled.div`
+  display: flex;
+  gap: 30px;
+`
+
+export const ExpirationLabel = styled.label`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`
+export const FinalizeButton = styled.button`
+  margin-top: 16px;
+  cursor: pointer;
+`
+export const OrderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
+export const OrderText = styled.p`
+  margin: 0;
+  font-size: 14px;
+  color: ${cores.bege};
+  line-height: 22px;
+  font-weight: 400;
+`
+
+export const OrderButton = styled.button`
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+`

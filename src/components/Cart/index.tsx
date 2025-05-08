@@ -11,6 +11,9 @@ const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items)
   const total = cartItems.reduce((acc, item) => acc + item.preco, 0)
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
+  const [checkoutStep, setCheckoutStep] = useState<
+    'delivery' | 'payment' | 'order'
+  >('delivery')
 
   const handleRemove = (cartItemId: string) => {
     dispatch(remove(cartItemId))
@@ -19,14 +22,33 @@ const Cart = () => {
   const handleClose = () => {
     dispatch(close())
     setIsCheckoutOpen(false)
+    setCheckoutStep('delivery')
+  }
+
+  const handleReturnToCart = () => {
+    setIsCheckoutOpen(false)
+    setCheckoutStep('delivery')
+  }
+
+  const handleProceedToDelivery = () => {
+    if (cartItems.length === 0) {
+      alert('Você deve adicionar um item ao carrinho')
+      return
+    }
+    setIsCheckoutOpen(true)
   }
 
   return (
     <CartContainer>
       <Overlay onClick={handleClose} />
-      <Sidebar onClick={(e) => e.stopPropagation()}>
+      <Sidebar isCheckout={isCheckoutOpen} onClick={(e) => e.stopPropagation()}>
         {isCheckoutOpen ? (
-          <Checkout onClose={() => setIsCheckoutOpen(false)} />
+          <Checkout
+            onClose={handleReturnToCart}
+            step={checkoutStep}
+            setStep={setCheckoutStep}
+            total={total}
+          />
         ) : (
           <>
             <ul>
@@ -61,9 +83,9 @@ const Cart = () => {
               </span>
             </Prices>
             <button
-              title="Clique aqui para continuar com a compra"
+              title="Clique aqui para continuar com a entrega"
               type="button"
-              onClick={() => setIsCheckoutOpen(true)}
+              onClick={handleProceedToDelivery}
             >
               Continuar com a entrega
             </button>

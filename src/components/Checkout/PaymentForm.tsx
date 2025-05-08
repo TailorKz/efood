@@ -1,34 +1,64 @@
-import { Form } from './styles'
+import React from 'react'
+import {
+  Form,
+  InlinePaymentGroup,
+  CardNumberLabel,
+  CVVLabel,
+  InlineExpirationGroup,
+  ExpirationLabel,
+  FinalizeButton
+} from './styles'
 
 interface PaymentFormProps {
   onPrevious: () => void
+  total: number
+  onPaymentSuccess: () => void
 }
 
-const PaymentForm = ({ onPrevious }: PaymentFormProps) => {
+const PaymentForm = ({
+  onPrevious,
+  total,
+  onPaymentSuccess
+}: PaymentFormProps) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onPaymentSuccess()
+  }
+
   return (
-    <Form>
-      <h2>Pagamento - Valor a pagar R$ 190,90</h2>
+    <Form onSubmit={handleSubmit}>
+      <h2>
+        Pagamento - Valor a pagar{' '}
+        {total.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        })}
+      </h2>
       <label>
         Nome no cartão
         <input type="text" required />
       </label>
-      <label>
-        Número do cartão
-        <input type="text" required />
-      </label>
-      <label>
-        CVV
-        <input type="text" required />
-      </label>
-      <label>
-        Mês de vencimento
-        <input type="text" required />
-      </label>
-      <label>
-        Ano de vencimento
-        <input type="text" required />
-      </label>
-      <button type="submit">Finalizar pagamento</button>
+      <InlinePaymentGroup>
+        <CardNumberLabel>
+          Número do cartão
+          <input type="text" required />
+        </CardNumberLabel>
+        <CVVLabel>
+          CVV
+          <input type="text" required />
+        </CVVLabel>
+      </InlinePaymentGroup>
+      <InlineExpirationGroup>
+        <ExpirationLabel>
+          Mês de vencimento
+          <input type="text" required />
+        </ExpirationLabel>
+        <ExpirationLabel>
+          Ano de vencimento
+          <input type="text" required />
+        </ExpirationLabel>
+      </InlineExpirationGroup>
+      <FinalizeButton type="submit">Finalizar pagamento</FinalizeButton>
       <button type="button" onClick={onPrevious}>
         Voltar para a edição de endereço
       </button>
