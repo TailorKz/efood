@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
+import { IMaskInput } from 'react-imask'
 import * as Yup from 'yup'
 import { Form, InlineGroup } from './styles'
 
@@ -76,11 +77,13 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
       <InlineGroup>
         <label>
           CEP
-          <input
+          <IMaskInput
+            mask="00000-000"
             type="text"
             name="cep"
+            placeholder="CEP"
             value={formik.values.cep}
-            onChange={formik.handleChange}
+            onAccept={(value: any) => formik.setFieldValue('cep', value)}
             onBlur={formik.handleBlur}
           />
           {formik.touched.cep && formik.errors.cep ? (
@@ -112,13 +115,7 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
         />
       </label>
       <button type="submit">Continuar com o pagamento</button>
-      <button
-        type="button"
-        onClick={(e) => {
-          e.preventDefault()
-          onClose()
-        }}
-      >
+      <button type="button" onClick={() => onClose()}>
         Voltar para o carrinho
       </button>
     </Form>

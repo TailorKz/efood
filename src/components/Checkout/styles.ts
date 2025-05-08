@@ -81,7 +81,7 @@ export const FinalizeButton = styled.button`
 export const OrderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 `
 
 export const OrderText = styled.p`
@@ -96,4 +96,11 @@ export const OrderButton = styled.button`
   padding: 8px 16px;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 8px;
+`
+
+export const Title = styled.h2`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${cores.bege};
 `

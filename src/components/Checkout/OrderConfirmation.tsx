@@ -1,4 +1,5 @@
-import { OrderContainer, OrderText, OrderButton } from './styles'
+import React from 'react'
+import * as S from './styles'
 
 interface OrderConfirmationProps {
   orderId: string
@@ -7,26 +8,26 @@ interface OrderConfirmationProps {
 
 const OrderConfirmation = ({ orderId, onComplete }: OrderConfirmationProps) => {
   return (
-    <OrderContainer>
-      <h2>Pedido realizado - {orderId}</h2>
-      <OrderText>
+    <S.OrderContainer>
+      <S.Title>Pedido realizado - {orderId}</S.Title>
+      <S.OrderText>
         Estamos felizes em informar que seu pedido já está em processo de
         preparação e, em breve, será entregue no endereço fornecido.
-      </OrderText>
-      <OrderText>
+      </S.OrderText>
+      <S.OrderText>
         Gostaríamos de ressaltar que nossos entregadores não estão autorizados a
         realizar cobranças extras.
-      </OrderText>
-      <OrderText>
+      </S.OrderText>
+      <S.OrderText>
         Lembre-se da importância de higienizar as mãos após o recebimento do
         pedido, garantindo assim sua segurança e bem-estar durante a refeição.
-      </OrderText>
-      <OrderText>
+      </S.OrderText>
+      <S.OrderText>
         Esperamos que desfrute de uma deliciosa e agradável experiência
         gastronômica. Bom apetite!
-      </OrderText>
-      <OrderButton onClick={onComplete}>Concluir</OrderButton>
-    </OrderContainer>
+      </S.OrderText>
+      <S.OrderButton onClick={onComplete}>Concluir</S.OrderButton>
+    </S.OrderContainer>
   )
 }
 

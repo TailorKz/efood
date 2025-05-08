@@ -5,6 +5,7 @@ import { remove, close } from '../../store/cartSlice'
 import { Overlay, CartContainer, Sidebar, Prices, CartItem } from './styles'
 import trash from '../../assets/images/lixeira-de-reciclagem-1.png'
 import Checkout from '../Checkout'
+import { PurchasePayload } from '../../api/api'
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -37,7 +38,33 @@ const Cart = () => {
     }
     setIsCheckoutOpen(true)
   }
-
+  const dummyPurchasePayload: PurchasePayload = {
+    products: cartItems.map((item) => ({
+      id: Number(item.cartItemId),
+      price: item.preco
+    })),
+    delivery: {
+      receiver: 'Cliente Exemplo',
+      address: {
+        description: 'Rua Exemplo, 123',
+        city: 'Cidade Exemplo',
+        zipCode: '00000-000',
+        number: 123,
+        complement: ''
+      }
+    },
+    payment: {
+      card: {
+        name: 'Nome no cartão',
+        number: '4111111111111111',
+        code: 123,
+        expires: {
+          month: 12,
+          year: 2030
+        }
+      }
+    }
+  }
   return (
     <CartContainer>
       <Overlay onClick={handleClose} />
@@ -48,6 +75,7 @@ const Cart = () => {
             step={checkoutStep}
             setStep={setCheckoutStep}
             total={total}
+            purchasePayload={dummyPurchasePayload}
           />
         ) : (
           <>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { IMaskInput } from 'react-imask'
 import {
   Form,
   InlinePaymentGroup,
@@ -51,11 +52,11 @@ const PaymentForm = ({
       <InlineExpirationGroup>
         <ExpirationLabel>
           Mês de vencimento
-          <input type="text" required />
+          <IMaskInput mask="00" type="text" required />
         </ExpirationLabel>
         <ExpirationLabel>
           Ano de vencimento
-          <input type="text" required />
+          <IMaskInput mask="00" type="text" required />
         </ExpirationLabel>
       </InlineExpirationGroup>
       <FinalizeButton type="submit">Finalizar pagamento</FinalizeButton>
