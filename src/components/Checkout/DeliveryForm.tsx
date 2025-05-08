@@ -1,13 +1,13 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-
+import { Form, InlineGroup } from './styles'
 interface DeliveryFormProps {
   onNext: () => void
   onClose: () => void
 }
 
-const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
+const DeliveryForm = ({ onNext }: DeliveryFormProps) => {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -38,14 +38,13 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit}>
       <h2>Entrega</h2>
       <label>
         Quem irá receber
         <input
           type="text"
           name="name"
-          placeholder="Nome completo"
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -59,7 +58,6 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
         <input
           type="text"
           name="address"
-          placeholder="Endereço completo"
           value={formik.values.address}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -73,7 +71,6 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
         <input
           type="text"
           name="city"
-          placeholder="Cidade"
           value={formik.values.city}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -82,50 +79,49 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
           <div>{formik.errors.city}</div>
         ) : null}
       </label>
-      <label>
-        CEP
-        <input
-          type="text"
-          name="cep"
-          placeholder="CEP"
-          value={formik.values.cep}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.cep && formik.errors.cep ? (
-          <div>{formik.errors.cep}</div>
-        ) : null}
-      </label>
-      <label>
-        Número
-        <input
-          type="text"
-          name="number"
-          placeholder="Número"
-          value={formik.values.number}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.number && formik.errors.number ? (
-          <div>{formik.errors.number}</div>
-        ) : null}
-      </label>
-      <label>
+      <InlineGroup>
+        <label>
+          CEP
+          <input
+            type="text"
+            name="cep"
+            value={formik.values.cep}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.cep && formik.errors.cep ? (
+            <div>{formik.errors.cep}</div>
+          ) : null}
+        </label>
+        <label>
+          Número
+          <input
+            type="text"
+            name="number"
+            value={formik.values.number}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.number && formik.errors.number ? (
+            <div>{formik.errors.number}</div>
+          ) : null}
+        </label>
+      </InlineGroup>
+      <label className="margin-bottom">
         Complemento (opcional)
         <input
           type="text"
           name="complement"
-          placeholder="Complemento"
           value={formik.values.complement}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
       </label>
       <button type="submit">Continuar com o pagamento</button>
-      <button type="button" onClick={onClose}>
+      <button type="button" onClick={onNext}>
         Voltar para o carrinho
       </button>
-    </form>
+    </Form>
   )
 }
 

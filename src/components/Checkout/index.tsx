@@ -14,7 +14,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
       {step === 'delivery' ? (
         <DeliveryForm onNext={handleNextStep} onClose={onClose} />
       ) : (
-        <PaymentForm onPrevious={handlePreviousStep} onClose={onClose} />
+        <PaymentForm onPrevious={handlePreviousStep} />
       )}
     </Sidebar>
   )

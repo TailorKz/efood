@@ -20,10 +20,10 @@ export const CartContainer = styled.div`
   justify-content: flex-end;
   z-index: 2;
 `
-export const Sidebar = styled.aside`
+export const Sidebar = styled.aside<{ isCheckout?: boolean }>`
   background-color: ${cores.first};
   z-index: 1;
-  padding: 40px 16px 0 16px;
+  padding: ${({ isCheckout }) => (isCheckout ? '0' : '40px 16px 0 16px')};
   max-width: 360px;
   width: 100%;
 
