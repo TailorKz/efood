@@ -42,7 +42,7 @@ const PaymentForm = ({
       <InlinePaymentGroup>
         <CardNumberLabel>
           Número do cartão
-          <input type="text" required />
+          <IMaskInput mask="00" type="text" required />
         </CardNumberLabel>
         <CVVLabel>
           CVV

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as S from './styles'
 
 interface OrderConfirmationProps {
@@ -7,6 +8,13 @@ interface OrderConfirmationProps {
 }
 
 const OrderConfirmation = ({ orderId, onComplete }: OrderConfirmationProps) => {
+  const navigate = useNavigate()
+
+  const handleComplete = () => {
+    navigate('/') // navega para a página inicial
+    onComplete() // fecha o checkout (ou sidebar)
+  }
+
   return (
     <S.OrderContainer>
       <S.Title>Pedido realizado - {orderId}</S.Title>
@@ -26,7 +34,7 @@ const OrderConfirmation = ({ orderId, onComplete }: OrderConfirmationProps) => {
         Esperamos que desfrute de uma deliciosa e agradável experiência
         gastronômica. Bom apetite!
       </S.OrderText>
-      <S.OrderButton onClick={onComplete}>Concluir</S.OrderButton>
+      <S.OrderButton onClick={handleComplete}>Concluir</S.OrderButton>
     </S.OrderContainer>
   )
 }

@@ -1,4 +1,5 @@
-/* eslint-disable no-unused-vars */ import React, { useState } from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react'
 import DeliveryForm from './DeliveryForm'
 import PaymentForm from './PaymentForm'
 import OrderConfirmation from './OrderConfirmation'
@@ -7,7 +8,8 @@ import { usePurchaseMutation } from '../../api/api'
 import { PurchasePayload } from '../../api/api'
 
 interface CheckoutProps {
-  onClose: () => void
+  onCancel: () => void // para "Voltar para o carrinho"
+  onComplete: () => void // para "Concluir"
   step: 'delivery' | 'payment' | 'order'
   setStep: (step: 'delivery' | 'payment' | 'order') => void
   total: number
@@ -15,7 +17,8 @@ interface CheckoutProps {
 }
 
 const Checkout = ({
-  onClose,
+  onCancel,
+  onComplete,
   step,
   setStep,
   total,
@@ -41,7 +44,7 @@ const Checkout = ({
   return (
     <Sidebar onClick={(e) => e.stopPropagation()}>
       {step === 'delivery' ? (
-        <DeliveryForm onNext={handleNextStep} onClose={onClose} />
+        <DeliveryForm onNext={handleNextStep} onClose={onCancel} />
       ) : step === 'payment' ? (
         <PaymentForm
           onPrevious={handlePreviousStep}
@@ -49,10 +52,10 @@ const Checkout = ({
           onPaymentSuccess={handlePaymentSuccess}
         />
       ) : (
-        <OrderConfirmation orderId={orderId || 'N/A'} onComplete={onClose} />
+        <OrderConfirmation orderId={orderId || 'N/A'} onComplete={onComplete} />
       )}
     </Sidebar>
   )
 }
 
-export default Checkout /* eslint-disable no-unused-vars */
+export default Checkout

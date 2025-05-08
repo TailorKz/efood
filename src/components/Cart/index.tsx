@@ -20,13 +20,13 @@ const Cart = () => {
     dispatch(remove(cartItemId))
   }
 
-  const handleClose = () => {
-    dispatch(close())
+  const handleReturnToCart = () => {
     setIsCheckoutOpen(false)
     setCheckoutStep('delivery')
   }
 
-  const handleReturnToCart = () => {
+  const handleCloseCart = () => {
+    dispatch(close())
     setIsCheckoutOpen(false)
     setCheckoutStep('delivery')
   }
@@ -38,40 +38,43 @@ const Cart = () => {
     }
     setIsCheckoutOpen(true)
   }
+
   const dummyPurchasePayload: PurchasePayload = {
     products: cartItems.map((item) => ({
       id: Number(item.cartItemId),
       price: item.preco
     })),
     delivery: {
-      receiver: 'Cliente Exemplo',
+      receiver: '',
       address: {
-        description: 'Rua Exemplo, 123',
-        city: 'Cidade Exemplo',
-        zipCode: '00000-000',
-        number: 123,
+        description: '',
+        city: '',
+        zipCode: '',
+        number: 0,
         complement: ''
       }
     },
     payment: {
       card: {
-        name: 'Nome no cartão',
-        number: '4111111111111111',
-        code: 123,
+        name: '',
+        number: '',
+        code: 0,
         expires: {
-          month: 12,
-          year: 2030
+          month: 0,
+          year: 0
         }
       }
     }
   }
+
   return (
     <CartContainer>
-      <Overlay onClick={handleClose} />
+      <Overlay onClick={handleCloseCart} />
       <Sidebar isCheckout={isCheckoutOpen} onClick={(e) => e.stopPropagation()}>
         {isCheckoutOpen ? (
           <Checkout
-            onClose={handleReturnToCart}
+            onCancel={handleReturnToCart}
+            onComplete={handleCloseCart}
             step={checkoutStep}
             setStep={setCheckoutStep}
             total={total}

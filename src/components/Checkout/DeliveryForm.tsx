@@ -81,7 +81,6 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
             mask="00000-000"
             type="text"
             name="cep"
-            placeholder="CEP"
             value={formik.values.cep}
             onAccept={(value: any) => formik.setFieldValue('cep', value)}
             onBlur={formik.handleBlur}
