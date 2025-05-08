@@ -7,7 +7,14 @@ export const Form = styled.form`
   color: ${cores.bege};
   gap: 8px;
   width: 100%;
+  input.error {
+    border: 1px solid red;
+  }
 
+  .error-message {
+    color: ${cores.bege};
+    font-size: 12px;
+  }
   button {
     cursor: pointer;
   }

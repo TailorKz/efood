@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './styles'
 
@@ -11,8 +10,8 @@ const OrderConfirmation = ({ orderId, onComplete }: OrderConfirmationProps) => {
   const navigate = useNavigate()
 
   const handleComplete = () => {
-    navigate('/') // navega para a página inicial
-    onComplete() // fecha o checkout (ou sidebar)
+    navigate('/')
+    onComplete()
   }
 
   return (

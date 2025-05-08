@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import DeliveryForm from './DeliveryForm'
 import PaymentForm from './PaymentForm'
 import OrderConfirmation from './OrderConfirmation'
@@ -8,8 +8,8 @@ import { usePurchaseMutation } from '../../api/api'
 import { PurchasePayload } from '../../api/api'
 
 interface CheckoutProps {
-  onCancel: () => void // para "Voltar para o carrinho"
-  onComplete: () => void // para "Concluir"
+  onCancel: () => void
+  onComplete: () => void
   step: 'delivery' | 'payment' | 'order'
   setStep: (step: 'delivery' | 'payment' | 'order') => void
   total: number

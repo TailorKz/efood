@@ -1,4 +1,3 @@
-import React from 'react'
 import { useFormik } from 'formik'
 import { IMaskInput } from 'react-imask'
 import * as Yup from 'yup'
@@ -20,10 +19,15 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
       complement: ''
     },
     validationSchema: Yup.object({
-      name: Yup.string().required('Campo obrigatório'),
+      name: Yup.string()
+        .matches(/^[A-Za-z\s]+$/, 'Digite somente letras')
+        .min(3, 'Nome deve ter pelo menos 3 caracteres')
+        .required('Campo obrigatório'),
       address: Yup.string().required('Campo obrigatório'),
       city: Yup.string().required('Campo obrigatório'),
-      cep: Yup.string().required('Campo obrigatório'),
+      cep: Yup.string()
+        .matches(/^\d{5}-\d{3}$/, 'CEP deve conter 8 dígitos')
+        .required('Campo obrigatório'),
       number: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: (values) => {
@@ -43,10 +47,11 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          className={formik.touched.name && formik.errors.name ? 'error' : ''}
         />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
-        ) : null}
+        {formik.touched.name && formik.errors.name && (
+          <div className="error-message">{formik.errors.name}</div>
+        )}
       </label>
       <label>
         Endereço
@@ -56,10 +61,13 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
           value={formik.values.address}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          className={
+            formik.touched.address && formik.errors.address ? 'error' : ''
+          }
         />
-        {formik.touched.address && formik.errors.address ? (
-          <div>{formik.errors.address}</div>
-        ) : null}
+        {formik.touched.address && formik.errors.address && (
+          <div className="error-message">{formik.errors.address}</div>
+        )}
       </label>
       <label>
         Cidade
@@ -69,10 +77,11 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
           value={formik.values.city}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          className={formik.touched.city && formik.errors.city ? 'error' : ''}
         />
-        {formik.touched.city && formik.errors.city ? (
-          <div>{formik.errors.city}</div>
-        ) : null}
+        {formik.touched.city && formik.errors.city && (
+          <div className="error-message">{formik.errors.city}</div>
+        )}
       </label>
       <InlineGroup>
         <label>
@@ -84,10 +93,11 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
             value={formik.values.cep}
             onAccept={(value: any) => formik.setFieldValue('cep', value)}
             onBlur={formik.handleBlur}
+            className={formik.touched.cep && formik.errors.cep ? 'error' : ''}
           />
-          {formik.touched.cep && formik.errors.cep ? (
-            <div>{formik.errors.cep}</div>
-          ) : null}
+          {formik.touched.cep && formik.errors.cep && (
+            <div className="error-message">{formik.errors.cep}</div>
+          )}
         </label>
         <label>
           Número
@@ -97,10 +107,13 @@ const DeliveryForm = ({ onNext, onClose }: DeliveryFormProps) => {
             value={formik.values.number}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            className={
+              formik.touched.number && formik.errors.number ? 'error' : ''
+            }
           />
-          {formik.touched.number && formik.errors.number ? (
-            <div>{formik.errors.number}</div>
-          ) : null}
+          {formik.touched.number && formik.errors.number && (
+            <div className="error-message">{formik.errors.number}</div>
+          )}
         </label>
       </InlineGroup>
       <label className="margin-bottom">
